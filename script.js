@@ -1,4 +1,4 @@
-[19.51, 23/10/2025] oktoo🥴: document.getElementById("sapaButton").addEventListener("click", function() {
+document.getElementById("sapaButton").addEventListener("click", function() {
   let sapaan = document.querySelector(".pesan-sapaan");
 
   // Kalau belum ada, buat elemen baru
