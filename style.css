@@ -1,69 +1,25 @@
-/* === Gaya Umum Halaman === */
+
 body {
     background-color: #FFFFE0; /* Warna kuning cerah */
     font-family: Arial, sans-serif; /* Jenis huruf bersih dan mudah dibaca */
-    color: #191970; /* Warna teks utama (biru gelap) */
-    margin: 0;
-    padding: 0;
+    color: #191970; /* Warna teks utama (Biru Gelap) */
 }
 
-/* === Kartu Profil === */
-.kartu-profil {
+.kartu-pelajar {
     width: 300px;
     margin: 50px auto; /* 50px jarak atas/bawah, auto menengahkan kiri/kanan */
     padding: 20px;
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 15px; /* Membuat sudut menjadi melengkung */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan lembut */
-    text-align: center; /* Menengahkan semua teks di dalam kartu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan */
 }
 
-/* === Gambar Profil === */
 .kartu-profil img {
     width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%; /* Membuat gambar menjadi lingkaran sempurna */
-    margin-bottom: 15px;
+    border-radius: 50%; /* Trik untuk membuat gambar persegi menjadi lingkaran sempurna */
 }
 
-/* === Teks di dalam kartu === */
-.kartu-profil h1 {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
-.kartu-profil p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 15px;
-}
-
-/* === Tautan Instagram === */
-.kartu-profil a {
-    display: inline-block;
-    margin-bottom: 10px;
-    text-decoration: none;
-    color: #191970;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-.kartu-profil a:hover {
-    color: #4169E1; /* Biru lebih terang saat dihover */
-}
-
-/* === Tombol === */
-button {
-    background-color: #191970;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #4169E1;
+.kartu-pelajar {
+    /* ... (kode dari slide sebelumnya) ... */
+    text-align: center; /* Menengah semua text di dalam kartu */
 }
