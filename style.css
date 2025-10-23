@@ -1,79 +1,100 @@
-/* ====== Gaya Umum ====== */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-color: #fdfdfd;
-    color: #333;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, #f2f6ff, #e8ecf7);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* ====== Header Abu-Abu ====== */
-.header {
-    width: 100%;
-    height: 150px;
-    background-color: #7a7a7a; /* Abu-abu */
-}
-
-/* ====== Kartu Profil ====== */
 .kartu-profil {
   width: 350px;
-  margin: 100px auto;
-  padding: 30px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   text-align: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  padding: 90px 30px 40px;
   position: relative;
-  overflow: visible;
+  transition: all 0.3s ease;
 }
 
-/* ====== Foto Profil ====== */
+.kartu-profil:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
 .foto-profil {
-  width: 150px;
-  height: 150px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid white;
+  border: 5px solid #fff;
   position: absolute;
-  top: -75px; /* Geser foto naik */
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
 }
 
-/* ====== Nama dan Jabatan ====== */
-.kartu-profil h1 {
-    margin-top: 80px;
-    font-size: 22px;
-    color: #222;
+h2 {
+  font-size: 1.6em;
+  margin: 10px 0 5px;
+  color: #333;
 }
 
-.kartu-profil h2 {
-    font-size: 13px;
-    color: #555;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+.sekolah {
+  font-weight: 500;
+  color: #4f46e5;
+  margin-top: -5px;
+  margin-bottom: 15px;
 }
 
-/* ====== Deskripsi ====== */
-.kartu-profil p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 20px;
+p {
+  font-size: 0.95em;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
 }
 
-/* ====== Tombol Instagram ====== */
-.tombol-ig {
-    display: inline-block;
-    background-color: #191970;
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    transition: 0.3s;
-    font-size: 14px;
+.ikon-sosial a {
+  font-size: 1.6em;
+  color: #E1306C;
+  margin: 0 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.3s;
 }
 
-.tombol-ig:hover {
-    background-color: #4169E1;
+.ikon-sosial a:hover {
+  color: #c2185b;
+  transform: scale(1.15);
+}
+
+button {
+  display: inline-block;
+  margin-top: 10px;
+  background-color: transparent;
+  border: 2px solid #4f46e5;
+  color: #4f46e5;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #4f46e5;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* Warna tambahan untuk GitHub */
+.ikon-sosial a:nth-child(2) {
+  color: #333;
+}
+
+.ikon-sosial a:nth-child(2):hover {
+  color: #000;
 }
