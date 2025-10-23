@@ -1,28 +1,19 @@
 body {
+  background: linear-gradient(to bottom, #dce3f0, #ffffff);
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg, #f2f6ff, #e8ecf7);
+  text-align: center;
   margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 40px 0;
 }
 
 .kartu-profil {
-  width: 350px;
-  background-color: white;
+  background-color: #fff;
+  width: 320px;
+  margin: 0 auto;
+  padding: 80px 30px 30px;
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  text-align: center;
-  padding: 90px 30px 40px;
   position: relative;
-  transition: all 0.3s ease;
-}
-
-.kartu-profil:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
 }
 
 .foto-profil {
@@ -35,83 +26,71 @@ body {
   top: -60px;
   left: 50%;
   transform: translateX(-50%);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 h2 {
-  font-size: 1.6em;
-  margin: 10px 0 5px;
-  color: #333;
+  margin-top: 70px;
+  color: #222;
 }
 
 .sekolah {
+  color: #0056b3;
   font-weight: 500;
-  color: #4f46e5;
-  margin-top: -5px;
-  margin-bottom: 15px;
+  margin: 5px 0 15px;
 }
 
 p {
-  font-size: 0.95em;
   color: #555;
+  font-size: 14px;
   line-height: 1.5;
-  margin-bottom: 20px;
 }
 
-.ikon-sosial a {
-  font-size: 1.6em;
-  color: #E1306C;
-  margin: 0 8px;
-  text-decoration: none;
-  transition: transform 0.2s ease, color 0.3s;
-}
-
-.ikon-sosial a:hover {
-  color: #c2185b;
-  transform: scale(1.15);
-}
-
-button {
-  display: inline-block;
-  margin-top: 10px;
-  background-color: transparent;
-  border: 2px solid #4f46e5;
-  color: #4f46e5;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background-color: #4f46e5;
-  color: white;
-  transform: scale(1.05);
-}
-
-/* Warna tambahan untuk GitHub */
-.ikon-sosial a:nth-child(2) {
-  color: #333;
-}
-
-.ikon-sosial a:nth-child(2):hover {
-  color: #000;
-}
-
+/* 🌸 Tombol Instagram */
 .tombol-ig {
   display: inline-block;
-  background-color: #E1306C;
-  color: white;
+  background-color: #e4405f;
+  color: #fff;
   text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 25px;
+  padding: 10px 16px;
+  border-radius: 8px;
   font-weight: 500;
-  margin-bottom: 15px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 10px;
+  transition: 0.3s;
 }
 
 .tombol-ig:hover {
-  background-color: #C13584;
-  transform: scale(1.05);
+  background-color: #c13584;
+}
+
+/* Ikon Sosial */
+.ikon-sosial {
+  margin-top: 15px;
+}
+
+.ikon-sosial a {
+  color: #333;
+  font-size: 22px;
+  margin: 0 10px;
+  transition: 0.3s;
+}
+
+.ikon-sosial a:hover {
+  color: #007bff;
+}
+
+/* Tombol “Sapa Aku!” */
+#sapaButton {
+  margin-top: 20px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background-color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#sapaButton:hover {
+  background-color: #333;
+  color: white;
 }
