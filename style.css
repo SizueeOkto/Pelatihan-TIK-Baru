@@ -98,3 +98,20 @@ button:hover {
 .ikon-sosial a:nth-child(2):hover {
   color: #000;
 }
+
+.tombol-ig {
+  display: inline-block;
+  background-color: #E1306C;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tombol-ig:hover {
+  background-color: #C13584;
+  transform: scale(1.05);
+}
