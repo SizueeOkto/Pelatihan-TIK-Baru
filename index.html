@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Mini Snake Game — Fixed</title>
+  <title>Mini Snake Game</title>
   <style>
     body {
       background: #111;
@@ -20,23 +20,64 @@
       border: 4px solid #3cff00;
       image-rendering: pixelated;
     }
-    .info {
-      display:flex;
-      gap:10px;
-      align-items:center;
+    #howto {
+      position: absolute;
+      background: rgba(0,0,0,0.9);
+      border: 3px solid #3cff00;
+      width: 350px;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .key {
+      display: inline-block;
+      border: 2px solid #fff;
+      padding: 8px 12px;
+      margin: 5px;
+      font-size: 20px;
+      border-radius: 6px;
     }
     button {
-      background:#3cff00;
-      color:#000;
-      border:none;
-      padding:6px 10px;
-      border-radius:6px;
-      cursor:pointer;
-      font-weight:600;
+      background: #3cff00;
+      color: #000;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 700;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+    .info {
+      display: flex;
+      gap: 10px;
+      align-items: center;
     }
   </style>
 </head>
 <body>
+
+  <div id="howto">
+    <h2>CARA BERMAIN</h2>
+    <p>Kendalikan ular hijau untuk memakan makanan merah.<br>
+    Jangan menabrak dinding atau tubuh sendiri!</p>
+
+    <h3>Kontrol:</h3>
+    <div>
+      <div class="key">W</div>
+      <div class="key">A</div>
+      <div class="key">S</div>
+      <div class="key">D</div>
+    </div>
+
+    <p><b>W</b> = Atas<br>
+       <b>A</b> = Kiri<br>
+       <b>S</b> = Bawah<br>
+       <b>D</b> = Kanan</p>
+
+    <button onclick="startGame()">PLAY</button>
+  </div>
+
   <div class="info">
     <div id="score">Score: 0</div>
     <button id="restart">Restart</button>
