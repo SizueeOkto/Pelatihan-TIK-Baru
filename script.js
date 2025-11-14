@@ -2,10 +2,18 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 const scoreEl = document.getElementById("score");
 const restartBtn = document.getElementById("restart");
+const howto = document.getElementById("howto");
 
 const BOX = 20;
 let snake, food, dir, nextDir, score, gameOver = false;
 let gameInterval;
+let playing = false; // NEW — game belum dimulai
+
+function startGame() {
+  howto.style.display = "none"; // hilangkan layar howto
+  playing = true;
+  init();
+}
 
 function init() {
   snake = [{ x: 200, y: 200 }];
@@ -24,13 +32,15 @@ function updateScore() {
   scoreEl.textContent = "Score: " + score;
 }
 
-function direction(e) {
-  const key = e.key;
-  if (key === "ArrowUp") trySetDir("UP");
-  else if (key === "ArrowDown") trySetDir("DOWN");
-  else if (key === "ArrowLeft") trySetDir("LEFT");
-  else if (key === "ArrowRight") trySetDir("RIGHT");
-}
+document.addEventListener("keydown", (e) => {
+  if (!playing) return; // cegah input sebelum PLAY ditekan
+  
+  const key = e.key.toUpperCase();
+  if (key === "W") trySetDir("UP");
+  else if (key === "S") trySetDir("DOWN");
+  else if (key === "A") trySetDir("LEFT");
+  else if (key === "D") trySetDir("RIGHT");
+});
 
 function trySetDir(d) {
   const opposite = { UP: "DOWN", DOWN: "UP", LEFT: "RIGHT", RIGHT: "LEFT" };
@@ -72,6 +82,8 @@ function showGameOver() {
 }
 
 function gameLoop() {
+  if (!playing) return;
+
   if (gameOver) return showGameOver();
 
   if (nextDir) {
@@ -93,12 +105,13 @@ function gameLoop() {
   if (dir === "LEFT") head.x -= BOX;
   if (dir === "RIGHT") head.x += BOX;
 
+  // wall collision
   if (head.x < 0 || head.x >= 400 || head.y < 0 || head.y >= 400) {
     gameOver = true;
     return;
   }
 
-  // self collision (skip index 0)
+  // self collision
   for (let i = 1; i < snake.length; i++) {
     if (head.x === snake[i].x && head.y === snake[i].y) {
       gameOver = true;
@@ -121,7 +134,4 @@ function gameLoop() {
   drawFood();
 }
 
-document.addEventListener("keydown", direction);
 restartBtn.addEventListener("click", init);
-
-init();
