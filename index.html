@@ -1,90 +1,42 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <title>Mini Snake Game</title>
-  <style>
-    body {
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      color: white;
-      font-family: Arial, sans-serif;
-      gap: 12px;
-    }
-    canvas {
-      background: #222;
-      border: 4px solid #3cff00;
-      image-rendering: pixelated;
-    }
-    #howto {
-      position: absolute;
-      background: rgba(0,0,0,0.9);
-      border: 3px solid #3cff00;
-      width: 350px;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .key {
-      display: inline-block;
-      border: 2px solid #fff;
-      padding: 8px 12px;
-      margin: 5px;
-      font-size: 20px;
-      border-radius: 6px;
-    }
-    button {
-      background: #3cff00;
-      color: #000;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 700;
-      margin-top: 15px;
-      font-size: 16px;
-    }
-    .info {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Block Blast - Simple</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<main class="app">
+<header>
+<h1>Block Blast</h1>
+<div class="hud">
+<div>Score: <span id="score">0</span></div>
+<button id="newGame">New Game</button>
+</div>
+</header>
 
-  <div id="howto">
-    <h2>CARA BERMAIN</h2>
-    <p>Kendalikan ular hijau untuk memakan makanan merah.<br>
-    Jangan menabrak dinding atau tubuh sendiri!</p>
 
-    <h3>Kontrol:</h3>
-    <div>
-      <div class="key">W</div>
-      <div class="key">A</div>
-      <div class="key">S</div>
-      <div class="key">D</div>
-    </div>
+<section class="game-area">
+<div id="grid" class="grid"></div>
 
-    <p><b>W</b> = Atas<br>
-       <b>A</b> = Kiri<br>
-       <b>S</b> = Bawah<br>
-       <b>D</b> = Kanan</p>
 
-    <button onclick="startGame()">PLAY</button>
-  </div>
+<aside class="panel">
+<h2>Pieces</h2>
+<div id="pieces" class="pieces"></div>
+<button id="shuffle">Shuffle Pieces</button>
+<div class="tips">
+<p>Klik pada piece yang ingin ditempatkan, lalu klik sel grid untuk menaruhnya.</p>
+<p>Hapus baris/kolom penuh untuk skor lebih besar.</p>
+</div>
+</aside>
+</section>
 
-  <div class="info">
-    <div id="score">Score: 0</div>
-    <button id="restart">Restart</button>
-  </div>
 
-  <canvas id="game" width="400" height="400"></canvas>
+<footer class="footer">Made for you — coba modifikasi sendiri!</footer>
+</main>
 
-  <script src="script.js"></script>
+
+<script src="script.js"></script>
 </body>
 </html>
