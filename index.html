@@ -1,70 +1,71 @@
 <!doctype html>
-}
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Block Blast — Clone Sederhana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Block Blast — Clone Sederhana</h1>
+    <div class="controls">
+      <div class="score">Skor: <span id="score">0</span></div>
+      <button id="restart">Restart</button>
+    </div>
+  </header>
 
+  <main>
+    <section class="game-area">
+      <div id="grid" class="grid"></div>
+      <aside class="panel">
+        <h2>Potongan</h2>
+        <div id="pieces" class="pieces"></div>
+        <p class="hint">Klik sebuah potongan, lalu klik kotak di papan untuk menempatkan.</p>
+        <p class="small">Versi: sederhana • Tidak ada iklan • Offline</p>
+      </aside>
+    </section>
 
-function clearLines(){
-let cleared = 0;
-// check rows
-for(let r=0;r<ROWS;r++){
-if(board[r].every(cell=>cell!==0)){
-for(let c=0;c<COLS;c++) board[r][c]=0;
-cleared++;
-}
-}
-// check cols
-for(let c=0;c<COLS;c++){
-let full = true;
-for(let r=0;r<ROWS;r++) if(board[r][c]===0) full=false;
-if(full){ for(let r=0;r<ROWS;r++) board[r][c]=0; cleared++; }
-}
-if(cleared>0) renderBoard();
-return cleared;
-}
+    <footer>
+      <p>Dibuat sebagai contoh — mirip gameplay Block Blast. Kamu bebas modifikasi.</p>
+    </footer>
+  </main>
 
+  <script src="script.js"></script>
+</body>
+</html><!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Block Blast — Clone Sederhana</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Block Blast — Clone Sederhana</h1>
+    <div class="controls">
+      <div class="score">Skor: <span id="score">0</span></div>
+      <button id="restart">Restart</button>
+    </div>
+  </header>
 
-function isGameOver(){
-// for each preview piece, check if there's any placement anywhere. if all placements possible for each piece collectively? Game over if there is no way to place all current previews in any order.
-// conservative check: for each piece, see if it has at least one legal spot; if any piece has zero spots then game over.
-for(const p of previews){
-let ok=false;
-for(let r=0;r<ROWS && !ok;r++){
-for(let c=0;c<COLS && !ok;c++){
-if(canPlace(p.shape,r,c)) ok=true;
-}
-}
-if(!ok) return true;
-}
-return false;
-}
+  <main>
+    <section class="game-area">
+      <div id="grid" class="grid"></div>
+      <aside class="panel">
+        <h2>Potongan</h2>
+        <div id="pieces" class="pieces"></div>
+        <p class="hint">Klik sebuah potongan, lalu klik kotak di papan untuk menempatkan.</p>
+        <p class="small">Versi: sederhana • Tidak ada iklan • Offline</p>
+      </aside>
+    </section>
 
+    <footer>
+      <p>Dibuat sebagai contoh — mirip gameplay Block Blast. Kamu bebas modifikasi.</p>
+    </footer>
+  </main>
 
-function newGame(){ score=0;level=1;scoreEl.textContent=score;levelEl.textContent=level;selectedPiece=null;previews=[];initBoard();nextPreviews();statusEl.textContent='New game'; }
-
-
-newBtn.addEventListener('click', newGame);
-shuffleBtn.addEventListener('click', ()=>{previews=[];nextPreviews();statusEl.textContent='Potongan diganti'; renderPreviews();});
-hintBtn.addEventListener('click', ()=>{ findHint(); });
-
-
-function findHint(){
-// naive hint: find first place where selected piece can go; if none, try each preview.
-for(let pi=0;pi<previews.length;pi++){
-const p = previews[pi];
-for(let r=0;r<ROWS;r++){
-for(let c=0;c<COLS;c++){
-if(canPlace(p.shape,r,c)){
-statusEl.textContent = `Hint: potongan ke-${pi+1} bisa ditempatkan di baris ${r+1}, kolom ${c+1}`;
-return;
-}
-}
-}
-}
-statusEl.textContent='Tidak ada hint — mungkin game over.';
-}
-
-
-// start
-newGame();
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
