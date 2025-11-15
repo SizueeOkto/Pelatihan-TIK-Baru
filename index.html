@@ -1,42 +1,14 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Block Blast - Simple</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Block Blast</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<main class="app">
-<header>
 <h1>Block Blast</h1>
-<div class="hud">
-<div>Score: <span id="score">0</span></div>
-<button id="newGame">New Game</button>
-</div>
-</header>
-
-
-<section class="game-area">
-<div id="grid" class="grid"></div>
-
-
-<aside class="panel">
-<h2>Pieces</h2>
-<div id="pieces" class="pieces"></div>
-<button id="shuffle">Shuffle Pieces</button>
-<div class="tips">
-<p>Klik pada piece yang ingin ditempatkan, lalu klik sel grid untuk menaruhnya.</p>
-<p>Hapus baris/kolom penuh untuk skor lebih besar.</p>
-</div>
-</aside>
-</section>
-
-
-<footer class="footer">Made for you — coba modifikasi sendiri!</footer>
-</main>
-
-
+<canvas id="gameCanvas"></canvas>
 <script src="script.js"></script>
 </body>
 </html>
