@@ -1,71 +1,164 @@
-<!doctype html>
-<html lang="id">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Block Blast — Clone Sederhana</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>Platformer Game</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #0c2b1f;
+        font-family: Arial;
+    }
+
+    #gameArea {
+        position: relative;
+        width: 800px;
+        height: 400px;
+        background: url("https://i.ibb.co/8Dx8NQx/forest-bg.png");
+        background-size: cover;
+        margin: 20px auto;
+        border: 3px solid #333;
+        overflow: hidden;
+    }
+
+    .player {
+        position: absolute;
+        width: 40px;
+        height: 50px;
+        background: pink;
+        border-radius: 10px;
+    }
+
+    .platform {
+        position: absolute;
+        background: #654321;
+    }
+
+    .coin {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: gold;
+        border-radius: 50%;
+        border: 3px solid #c79c00;
+    }
+
+    #hud {
+        width: 800px;
+        margin: 10px auto;
+        color: white;
+        font-size: 20px;
+        text-align: center;
+    }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Block Blast — Clone Sederhana</h1>
-    <div class="controls">
-      <div class="score">Skor: <span id="score">0</span></div>
-      <button id="restart">Restart</button>
-    </div>
-  </header>
 
-  <main>
-    <section class="game-area">
-      <div id="grid" class="grid"></div>
-      <aside class="panel">
-        <h2>Potongan</h2>
-        <div id="pieces" class="pieces"></div>
-        <p class="hint">Klik sebuah potongan, lalu klik kotak di papan untuk menempatkan.</p>
-        <p class="small">Versi: sederhana • Tidak ada iklan • Offline</p>
-      </aside>
-    </section>
+<div id="hud">Coins: <span id="coinCount">0</span> / 3</div>
 
-    <footer>
-      <p>Dibuat sebagai contoh — mirip gameplay Block Blast. Kamu bebas modifikasi.</p>
-    </footer>
-  </main>
+<div id="gameArea">
+    <div id="player" class="player"></div>
 
-  <script src="script.js"></script>
-</body>
-</html><!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Block Blast — Clone Sederhana</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <h1>Block Blast — Clone Sederhana</h1>
-    <div class="controls">
-      <div class="score">Skor: <span id="score">0</span></div>
-      <button id="restart">Restart</button>
-    </div>
-  </header>
+    <!-- Platform tanah -->
+    <div class="platform" style="width: 800px; height: 40px; bottom: 0; left: 0;"></div>
 
-  <main>
-    <section class="game-area">
-      <div id="grid" class="grid"></div>
-      <aside class="panel">
-        <h2>Potongan</h2>
-        <div id="pieces" class="pieces"></div>
-        <p class="hint">Klik sebuah potongan, lalu klik kotak di papan untuk menempatkan.</p>
-        <p class="small">Versi: sederhana • Tidak ada iklan • Offline</p>
-      </aside>
-    </section>
+    <!-- Platform mengambang -->
+    <div class="platform" style="width: 120px; height: 20px; bottom: 140px; left: 200px;"></div>
+    <div class="platform" style="width: 120px; height: 20px; bottom: 220px; left: 450px;"></div>
 
-    <footer>
-      <p>Dibuat sebagai contoh — mirip gameplay Block Blast. Kamu bebas modifikasi.</p>
-    </footer>
-  </main>
+    <!-- Koin -->
+    <div class="coin" id="c1" style="left: 240px; bottom: 170px;"></div>
+    <div class="coin" id="c2" style="left: 500px; bottom: 250px;"></div>
+    <div class="coin" id="c3" style="left: 700px; bottom: 50px;"></div>
+</div>
 
-  <script src="script.js"></script>
+<script>
+const game = document.getElementById("gameArea");
+const player = document.getElementById("player");
+const coinCount = document.getElementById("coinCount");
+
+let x = 50, y = 300;
+let velY = 0;
+let jumping = false;
+let coins = 0;
+
+const gravity = 0.7;
+const speed = 4;
+
+let keys = {};
+
+document.addEventListener("keydown", e => keys[e.key] = true);
+document.addEventListener("keyup", e => keys[e.key] = false);
+
+// Loop game
+function gameLoop() {
+
+    // Gerakan kiri-kanan
+    if (keys["ArrowLeft"]) x -= speed;
+    if (keys["ArrowRight"]) x += speed;
+
+    // Lompat
+    if (keys["ArrowUp"] && !jumping) {
+        velY = -12;
+        jumping = true;
+    }
+
+    // Terapkan gravitasi
+    velY += gravity;
+    y += velY;
+
+    // Cegah jatuh ke bawah tanah
+    if (y > 300) {
+        y = 300;
+        velY = 0;
+        jumping = false;
+    }
+
+    // Cek tabrakan dengan platform
+    document.querySelectorAll(".platform").forEach(p => {
+        let rectP = p.getBoundingClientRect();
+        let rectPL = player.getBoundingClientRect();
+
+        if (
+            rectPL.right > rectP.left &&
+            rectPL.left < rectP.right &&
+            rectPL.bottom > rectP.top &&
+            rectPL.bottom < rectP.bottom &&
+            velY > 0
+        ) {
+            y = (game.offsetHeight - rectP.top) - player.offsetHeight;
+            velY = 0;
+            jumping = false;
+        }
+    });
+
+    // Cek ambil koin
+    document.querySelectorAll(".coin").forEach(c => {
+        let r1 = c.getBoundingClientRect();
+        let r2 = player.getBoundingClientRect();
+
+        if (
+            r2.right > r1.left &&
+            r2.left < r1.right &&
+            r2.bottom > r1.top &&
+            r2.top < r1.bottom
+        ) {
+            c.style.display = "none";
+            coins++;
+            coinCount.textContent = coins;
+        }
+    });
+
+    // Update posisi
+    player.style.left = x + "px";
+    player.style.bottom = y + "px";
+
+    requestAnimationFrame(gameLoop);
+}
+
+gameLoop();
+</script>
+
 </body>
 </html>
